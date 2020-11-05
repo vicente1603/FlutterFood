@@ -58,17 +58,19 @@ class CustomDrawer extends StatelessWidget {
                               ),
                               GestureDetector(
                                 child: Text(
-                                  !model.isLoggedIn() ?
-                                  "Entre ou cadastre-se"
-                                  : "Sair",
+                                  !model.isLoggedIn()
+                                      ? "Entre ou cadastre-se"
+                                      : "Sair",
                                   style: TextStyle(
                                       color: Theme.of(context).primaryColor,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 onTap: () {
-                                  if(!model.isLoggedIn())
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => LoginScreen()));
+                                  if (!model.isLoggedIn())
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LoginScreen()));
                                   else
                                     model.signOut();
                                 },
@@ -84,7 +86,7 @@ class CustomDrawer extends StatelessWidget {
               Divider(),
               DrawerTile(Icons.home, "Início", pageController, 0),
               DrawerTile(Icons.list, "Cardápio", pageController, 1),
-              DrawerTile(Icons.store, "Restaurantes", pageController, 2),
+              DrawerTile(Icons.pin_drop, "Restaurantes", pageController, 2),
               DrawerTile(
                   Icons.playlist_add_check, "Meus Pedidos", pageController, 3)
             ],
