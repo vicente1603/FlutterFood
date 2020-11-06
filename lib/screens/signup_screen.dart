@@ -32,6 +32,9 @@ class SignUpScreen extends StatelessWidget {
             backgroundColor: Colors.redAccent,
             duration: Duration(seconds: 2)),
       );
+      Future.delayed(Duration(seconds: 2)).then((value) {
+        Navigator.of(context).pop();
+      });
     }
 
     return Scaffold(
