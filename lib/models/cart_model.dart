@@ -8,6 +8,8 @@ import 'package:scoped_model/scoped_model.dart';
 class CartModel extends Model {
   UserModel user;
   List<CartProduct> products = [];
+  String couponCode;
+  int discountPercentage = 0;
   bool isLoading = false;
 
   CartModel(this.user) {
@@ -73,8 +75,31 @@ class CartModel extends Model {
     notifyListeners();
   }
 
-  void _loadCartItems() async {
+  void setCoupon(String couponCode, int discountPercentage) {
+    this.couponCode = couponCode;
+    this.discountPercentage = discountPercentage;
+  }
 
+  void updateProductsPrice() {
+    notifyListeners();
+  }
+
+  double getProductsPrice() {
+    double price = 0.0;
+
+    for (CartProduct c in products) {
+      if (c.productData != null) {
+        price += c.quantity * c.productData.price;
+      }
+    }
+    return price;
+  }
+
+  double getDiscount() {
+    return getProductsPrice() * discountPercentage / 100;
+  }
+
+  void _loadCartItems() async {
     QuerySnapshot query = await Firestore.instance
         .collection("users")
         .document(user.firebaseUser.uid)

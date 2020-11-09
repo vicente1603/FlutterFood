@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
                 title: "Flutter's Food",
                 theme: ThemeData(
                     primarySwatch: Colors.blue,
-                    primaryColor: Color.fromARGB(255, 4, 125, 141)),
+                    primaryColor:Colors.deepOrange[600]),
                 debugShowCheckedModeBanner: false,
                 home: HomeScreen()),
           );
