@@ -79,7 +79,7 @@ class PriceCard extends StatelessWidget {
                 SizedBox(
                   height: 44.0,
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: buy,
                     child: Text("Finalizar pedido",
                         style: TextStyle(
                           fontSize: 18.0,
